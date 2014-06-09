@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @product.title
+%p
+  %strong Description:
+  = @product.description
+%p
+  %strong Price:
+  = number_to_currency(@product.price, :unit => "$")
+%p
+  %strong Tags:
+  = raw @product.tag_list.map { |t| link_to t, products_path(:keyword=>t) }.join(', ')
+= link_to 'Edit', edit_product_path(@product)
+|
+\#{link_to 'Back', products_path}
